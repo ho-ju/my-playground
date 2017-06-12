@@ -68,11 +68,11 @@ $ gulp pagespeed
 * [Photo 2](http://webjho.com/playground/wii/source-photos/wii-edited.jpg)
 
 # Next Steps
-* TODO: Add a proper designed console status window on page
+* TODO: Add a styled console status window on page
 * TODO: Add animated front panel: open / close state
-* TODO: Add disc as a draggable object to load into Wii console, which then loads video or gif below
+* TODO: Add disc element as a draggable object to load into Wii console, which then loads video or gif below
 * TODO: Add some more animation, perhaps some 3d dragging
-* TODO: Write some unit tests
+* TODO: Write unit tests
 
 # Demo
 [http://webjho.com/playground/wii/](http://webjho.com/playground/wii/)
