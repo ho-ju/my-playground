@@ -1,6 +1,6 @@
 # [![Web Starter Kit](http://webjho.com/images/logo.png)](http://webjho.com/)
 
-## Overview
+# Overview
 My inspiration for this project was recycling.  After watching several recent shows on consumption and wastage, I was just about to hand this device over to a friend when I thought of another way to 'recycle' it.  After all those hours spent fighting over Mario Kart, I thought the Wii could be 'recycled' for one more time!
 
 # Install
@@ -36,47 +36,47 @@ $ npm install
 That's it!  Project is now ready to roll!
 
 
-## Commands
+# Commands
 
-## Watch For Changes & Automatically Refresh Across Devices
+### Watch For Changes & Automatically Refresh Across Devices
 
 ```sh
 $ gulp serve
 ```
 
-## Build & Optimize
+### Build & Optimize
 
 ```sh
 $ gulp
 ```
 
-## Serve the Fully Built & Optimized Site
+### Serve the Fully Built & Optimized Site
 
 ```sh
 $ gulp serve:dist
 ```
 
-## Performance Insights
+### Performance Insights
 
 ```sh
 $ gulp pagespeed
 ```
 
-## Origial Photos
+# Origial Photos
 * [Photo 1](http://webjho.com/playground/wii/source-photos/wii-original.jpg)
 * [Photo 2](http://webjho.com/playground/wii/source-photos/wii-edited.jpgg)
 
-## Next Steps
+# Next Steps
 * Would have liked to have added a proper designed console status window on page
 * Would have liked to have added animated front panel: open / close state
 * Would have liked to have added disc as a draggable object to load into Wii console, which loads video or gif below
 * Would have liked to have added some more animation, perhaps some 3d dragging
 * Write some tests
 
-## Demo
+# Demo
 [http://webjho.com/playground/wii/](http://webjho.com/playground/wii/)
 
-## Notes
+# Notes
 * Time taken: Approx 3.5hrs
 * Excluded some browser prefixes, targeted modern browsers
 * Valid HTML, CSS and Javascript
