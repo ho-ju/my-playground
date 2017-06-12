@@ -1,7 +1,8 @@
 # [![Web Starter Kit](http://webjho.com/images/logo.png)](http://webjho.com/)
 
 # Overview
-My inspiration for this project was recycling.  After watching several recent shows on consumption and wastage, I was just about to hand this device over to a friend when I thought of another way to 'recycle' it.  After all those hours spent fighting over Mario Kart, I thought the Wii could be 'recycled' for one more time!
+My inspiration for this project was recycling.
+After watching several recent shows on consumption and wastage, I was just about to hand this device over to a friend when I thought of another way to 'recycle' it.  So, after all those hours spent fighting over Mario Kart, those hours spent trying to clock NBA Jam - I thought the Wii could be 'recycled' one last time!
 
 # Install
 
@@ -64,14 +65,14 @@ $ gulp pagespeed
 
 # Origial Photos
 * [Photo 1](http://webjho.com/playground/wii/source-photos/wii-original.jpg)
-* [Photo 2](http://webjho.com/playground/wii/source-photos/wii-edited.jpgg)
+* [Photo 2](http://webjho.com/playground/wii/source-photos/wii-edited.jpg)
 
 # Next Steps
-* Would have liked to have added a proper designed console status window on page
-* Would have liked to have added animated front panel: open / close state
-* Would have liked to have added disc as a draggable object to load into Wii console, which loads video or gif below
-* Would have liked to have added some more animation, perhaps some 3d dragging
-* Write some tests
+* TODO: Add a proper designed console status window on page
+* TODO: Add animated front panel: open / close state
+* TODO: Add disc as a draggable object to load into Wii console, which then loads video or gif below
+* TODO: Add some more animation, perhaps some 3d dragging
+* TODO: Write some unit tests
 
 # Demo
 [http://webjho.com/playground/wii/](http://webjho.com/playground/wii/)
@@ -79,4 +80,5 @@ $ gulp pagespeed
 # Notes
 * Time taken: Approx 3.5hrs
 * Excluded some browser prefixes, targeted modern browsers
+* Mobile friendly
 * Valid HTML, CSS and Javascript

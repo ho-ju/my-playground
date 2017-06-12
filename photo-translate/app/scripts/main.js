@@ -97,6 +97,7 @@
 
     /**
     * Turn Wii instance on or off and load drive
+    * @method togglePower
     */
     togglePower: function() {
       this.hasPower = !this.hasPower;
@@ -116,6 +117,7 @@
 
     /**
     * Load Drive event of Wii instance
+    * @method loadDrive
     */
     loadDrive: function() {
       this.driveLoaded = this.hasPower ? !this.driveLoaded : false;
@@ -130,6 +132,7 @@
 
     /**
     * Eject event of Wii instance
+    * @method eject
     */
     eject: function() {
       var wii = this;
@@ -158,6 +161,7 @@
 
     /**
     * Reset event of Wii instance
+    * @method reset
     */
     reset: function() {
       var wii = this;
@@ -193,6 +197,7 @@
 
     /**
     * Toggle processing state of Wii instance
+    * @method toggleProcessing
     */
     toggleProcessing: function() {
       this.isProcessing = this.hasPower ? !this.isProcessing : false;
@@ -205,6 +210,7 @@
 
     /**
     * Toggle given class on element, based on bool check
+    * @method toggleClass
     * @param {bool} check - Check that is evaluated to determine add/remove class
     * @param {Object} element - Target element
     * @param {String} toggleClass - Name of class to add
