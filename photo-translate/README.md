@@ -1,11 +1,11 @@
-# [![Web Starter Kit](http://webjho.com/images/logo.png)]
+# [![Web Starter Kit](http://webjho.com/images/logo.png)](http://webjho.com/)
 
 ## Overview
-
+My inspiration for this project was recycling.  After watching several recent shows on consumption and wastage, I was just about to hand this device over to a friend when I thought of another way to 'recycle' it.  After all those hours spent fighting over Mario Kart, I thought the Wii could be 'recycled' for one more time!
 
 # Install
 
-**tl;dr**: [Download WSK](https://github.com/google/web-starter-kit/releases/latest) and run `$ npm install --global gulp && npm install` in that directory to get started.
+**tl;dr**: Download and run `$ npm install --global gulp && npm install` in that directory to get started.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ Next, install the local dependencies Web Starter Kit requires:
 $ npm install
 ```
 
-That's it!  Project is ready to roll!
+That's it!  Project is now ready to roll!
 
 
 ## Commands
@@ -61,3 +61,22 @@ $ gulp serve:dist
 ```sh
 $ gulp pagespeed
 ```
+
+## Origial Photos
+* [Photo 1](http://webjho.com/playground/wii/source-photos/wii-original.jpg)
+* [Photo 2](http://webjho.com/playground/wii/source-photos/wii-edited.jpgg)
+
+## Next Steps
+* Would have liked to have added a proper designed console status window on page
+* Would have liked to have added animated front panel: open / close state
+* Would have liked to have added disc as a draggable object to load into Wii console, which loads video or gif below
+* Would have liked to have added some more animation, perhaps some 3d dragging
+* Write some tests
+
+## Demo
+[http://webjho.com/playground/wii/](http://webjho.com/playground/wii/)
+
+## Notes
+* Time taken: Approx 3.5hrs
+* Excluded some browser prefixes, targeted modern browsers
+* Valid HTML, CSS and Javascript
