@@ -178,6 +178,7 @@
         // Wii turns off temporarily
         wii.togglePower(true);
         console.log('==== Wii are resetting ====');
+
         setTimeout(function() {
           // No longer resetting
           wii.isResetting = false;
