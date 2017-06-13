@@ -1,8 +1,8 @@
 # [![Web Starter Kit](http://webjho.com/images/logo.png)](http://webjho.com/)
 
 # Overview
-My inspiration for this project was recycling.
-After watching several recent shows on consumption and wastage, I was just about to hand this device over to a friend when I thought of another way to 'recycle' it.  So, after all those hours spent fighting over Mario Kart, those hours spent trying to clock NBA Jam - I thought the Wii could be 'recycled' one last time!
+My inspiration for this project was recycling.<br />
+After watching several recent shows on consumption and wastage, I was just about to hand this device over when I thought of another way to 'recycle' it.  So, after all those hours spent fighting over Mario Kart, those hours spent trying to clock NBA Jam - the Wii has been 'recycled' one more time!
 
 # Install
 
@@ -28,7 +28,7 @@ $ npm install --global gulp
 
 ### Local dependencies
 
-Next, install the local dependencies Web Starter Kit requires:
+Next, install the local dependencies the project requires:
 
 ```sh
 $ npm install
@@ -70,8 +70,8 @@ $ gulp pagespeed
 # Next Steps
 * TODO: Add a styled console status window on page
 * TODO: Add animated front panel: open / close state
-* TODO: Add disc element as a draggable object to load into Wii console, which then loads video or gif below
-* TODO: Add some more animation, perhaps some 3d dragging
+* TODO: Add disc element as a draggable object to load into Wii console, which then loads video or GIF
+* TODO: Add some more animation, perhaps some 3d on drag
 * TODO: Write unit tests
 
 # Demo
@@ -80,5 +80,5 @@ $ gulp pagespeed
 # Notes
 * Time taken: Approx 3.5hrs
 * Excluded some browser prefixes, targeted modern browsers
-* Mobile friendly
 * Valid HTML, CSS and Javascript
+* Mobile friendly
