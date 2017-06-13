@@ -78,8 +78,11 @@
 
   // Global Vars
   var myWii = null;
-  var ejectTimer;
-  var resetTimer;
+  var ejectTimer = null;
+  var resetTimer = null;
+  var trackMouse = null;
+  var mouseDistance = 0;
+  var mouseLastPos = {x: null, y: null};
 
   // Wii Constructor
   var Wii = function(hasPower) {
@@ -90,6 +93,7 @@
     this.isProcessing = false;
     this.isHorizontal = false;
     this.processingTime = 1500;
+    this.powerShakeTarget = 4000;
   };
 
   // Wii Prototype, bind variables and methods
@@ -98,21 +102,25 @@
     /**
     * Turn Wii instance on or off and load drive
     * @method togglePower
+    * @param {bool} isReset - if reset button, only temporary power outage
     */
-    togglePower: function() {
+    togglePower: function(isReset) {
       this.hasPower = !this.hasPower;
 
       // Console Logs
       if (this.hasPower) {
+        this.disablePowerShake();
         console.log('==== Wii have power ====');
       } else {
+        if (!isReset) {
+          this.resetPowerShake();
+        }
         console.log('==== Wii wish you goodbye ====');
       }
 
       this.loadDrive();
       this.toggleClass(
-        this.hasPower, 'btn-power', 'wii-box__ctrl--power--active'
-      );
+        this.hasPower, 'btn-power', 'wii-box__ctrl--power--active');
     },
 
     /**
@@ -122,8 +130,7 @@
     loadDrive: function() {
       this.driveLoaded = this.hasPower ? !this.driveLoaded : false;
       this.toggleClass(
-        this.driveLoaded, 'cd-drive', 'wii-box__ctrl--cd--active'
-      );
+        this.driveLoaded, 'cd-drive', 'wii-box__ctrl--cd--active');
       // Console Logs
       if (this.driveLoaded) {
         console.log('==== Wii drive loaded ====');
@@ -138,19 +145,17 @@
       var wii = this;
       if (wii.hasPower && !wii.isProcessing) {
         wii.isEjecting = true;
-        wii.toggleClass(
-          wii.isEjecting, 'cd-drive', 'wii-box__ctrl--cd--eject'
-        );
         wii.toggleProcessing();
+        wii.toggleClass(
+          wii.isEjecting, 'cd-drive', 'wii-box__ctrl--cd--eject');
         console.log('==== Wii are ejecting ====');
 
         window.clearTimeout(ejectTimer);
         ejectTimer = setTimeout(function() {
           wii.isEjecting = false;
-          wii.toggleClass(
-            wii.isEjecting, 'cd-drive', 'wii-box__ctrl--cd--eject'
-          );
           wii.toggleProcessing();
+          wii.toggleClass(
+            wii.isEjecting, 'cd-drive', 'wii-box__ctrl--cd--eject');
           console.log('==== Wii eject complete ====');
         }, wii.processingTime);
       } else {
@@ -167,19 +172,17 @@
       var wii = this;
       if (wii.hasPower && !wii.isProcessing) {
         wii.isResetting = true;
-        wii.toggleClass(
-          wii.isResetting, 'cd-drive', 'wii-box__ctrl--cd--reset'
-        );
         wii.toggleProcessing();
+        wii.toggleClass(
+          wii.isResetting, 'cd-drive', 'wii-box__ctrl--cd--reset');
         // Wii turns off temporarily
-        wii.togglePower();
+        wii.togglePower(true);
         console.log('==== Wii are resetting ====');
         setTimeout(function() {
           // No longer resetting
           wii.isResetting = false;
           wii.toggleClass(
-            wii.isResetting, 'cd-drive', 'wii-box__ctrl--cd--reset'
-          );
+            wii.isResetting, 'cd-drive', 'wii-box__ctrl--cd--reset');
           console.log('==== Wii reset complete ====');
         }, 300);
 
@@ -187,12 +190,33 @@
         resetTimer = setTimeout(function() {
           wii.toggleProcessing();
           // Turn Wii On
-          wii.togglePower();
+          wii.togglePower(true);
         }, wii.processingTime);
       } else {
         wii.isResetting = false;
         console.log('==== Wii are busy processing or have no power ====');
       }
+    },
+
+    /**
+    * Reset mouse movement tracker, bind mousemove event
+    * @method resetPowerShake
+    */
+    resetPowerShake: function() {
+      mouseDistance = 0;
+      document.addEventListener('mousemove', trackMouse);
+      document.addEventListener('touchmove', trackMouse);
+      myWii.toggleClass(false, 'instructions', 'hide');
+    },
+
+    /**
+    * Disable mouse movement tracker, unbind mousemove event
+    * @method disablePowerShake
+    */
+    disablePowerShake: function() {
+      document.removeEventListener('mousemove', trackMouse);
+      document.removeEventListener('touchmove', trackMouse);
+      myWii.toggleClass(true, 'instructions', 'hide');
     },
 
     /**
@@ -226,31 +250,64 @@
   };
 
   /**
-  * Add Event Listeners
-  */
-  document.getElementById('btn-power').addEventListener('click', function() {
-    myWii.togglePower();
-  }, false);
-
-  document.getElementById('btn-eject').addEventListener('click', function() {
-    myWii.eject();
-  }, false);
-
-  document.getElementById('btn-reset').addEventListener('click', function() {
-    myWii.reset();
-  }, false);
-
-  document.getElementById('btn-panel').addEventListener('click', function() {
-    myWii.isHorizontal = !myWii.isHorizontal;
-    myWii.toggleClass(myWii.isHorizontal, 'wii-container', 'side');
-  }, false);
-
-  /**
   * Window onload event, create new instance of Wii, fade in content
   */
   window.onload = function() {
     myWii = new Wii(false);
     myWii.toggleClass(true, 'wii-container', 'show');
     myWii.toggleClass(false, 'processor', 'show');
+
+    /**
+    * Add Event Listeners
+    */
+    document.getElementById('btn-power').addEventListener('click', function() {
+      myWii.togglePower();
+    }, false);
+
+    document.getElementById('btn-eject').addEventListener('click', function() {
+      myWii.eject();
+    }, false);
+
+    document.getElementById('btn-reset').addEventListener('click', function() {
+      myWii.reset();
+    }, false);
+
+    document.getElementById('btn-panel').addEventListener('click', function() {
+      myWii.isHorizontal = !myWii.isHorizontal;
+      myWii.toggleClass(myWii.isHorizontal, 'wii-container', 'side');
+    }, false);
+
+    /**
+    * Track total distance of Mouse moved to switch power ON
+    * Remove event listener once power target reached
+    * @param {Object} e - event object passed
+    */
+    trackMouse = function(e) {
+      var event = e;
+
+      // If no clientY pos, event is touch event
+      if (!event.clientY) {
+        event = e.touches[0];
+      }
+
+      if (mouseLastPos.x) {
+        mouseDistance +=
+          Math.sqrt(Math.pow(mouseLastPos.y - event.clientY, 2) +
+          Math.pow(mouseLastPos.x - event.clientX, 2));
+
+        console.log('*** Generated power ' + Math.round(mouseDistance) +
+          ' of ' + myWii.powerShakeTarget);
+
+        if (Math.round(mouseDistance) > myWii.powerShakeTarget) {
+          myWii.togglePower();
+        }
+      }
+      mouseLastPos.x = event.clientX;
+      mouseLastPos.y = event.clientY;
+    };
+
+    // Bind mousemove event & touchmove
+    document.addEventListener('mousemove', trackMouse);
+    document.addEventListener('touchmove', trackMouse);
   };
 })();

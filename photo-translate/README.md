@@ -69,6 +69,7 @@ $ gulp pagespeed
 
 # Next Steps
 * TODO: Add a styled console status window on page
+* TODO: Add a styled power generator bar for mouse movement power function
 * TODO: Add animated front panel: open / close state
 * TODO: Add disc element as a draggable object to load into Wii console, which then loads video or GIF
 * TODO: Add some more animation, perhaps some 3d on drag

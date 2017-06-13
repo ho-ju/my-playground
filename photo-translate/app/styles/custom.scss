@@ -43,6 +43,11 @@ $purple: #9e0bea;
     border-radius: $radius;
 }
 
+$mobile:            "only screen and (max-width: 768px)";
+$mobileResponsive:  "only screen and (max-width: 420px)";
+$tablet:            "only screen and (min-width: 768px) and (max-width: 949px)";
+$desktop:           "only screen and (min-width: 950px)";
+
 
 /*------------------------------------*\
   #FONTS
@@ -98,6 +103,8 @@ $font-Flaticon-power: "\f101";
 }
 
 body {
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto Condensed', sans-serif;
     background: $bg-grey url('../images/felt.png') top left repeat;
 
@@ -115,6 +122,24 @@ body {
             opacity: 1;
         }
     }
+
+    #instructions {
+        text-align: center;
+        color: $white;
+        margin: 20px 0 0;
+        padding: 0;
+        font-size: 14px;
+        letter-spacing: 0.05em;
+        opacity: 1;
+        @include basicAnimateAll();
+
+        &.hide { opacity: 0; }
+
+        @media #{$mobile} {
+            font-size: 12px;
+            margin-top: 15px;
+        }
+    }
 }
 
 
@@ -128,12 +153,17 @@ body {
     @include basicAnimateAll();
     opacity: 0;
 
+    @media #{$mobile} {
+        margin: 25px auto 0;
+    }
+
     &.show {
         opacity: 1;
     }
     &.side {
         // Browser Pre-fixes not included
         transform: rotate(-90deg);
+        @media #{$mobile} { transform: rotate(0); }
     }
 
     .wii-box-side {
