@@ -133,11 +133,15 @@ body {
         opacity: 1;
         @include basicAnimateAll();
 
+        .mobile { display: none; }
+
         &.hide { opacity: 0; }
 
         @media #{$mobile} {
             font-size: 12px;
             margin-top: 15px;
+            .desktop { display: none; }
+            .mobile { display: block; }
         }
     }
 }
