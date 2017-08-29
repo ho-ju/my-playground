@@ -1,0 +1,38 @@
+/* ==========================================================================
+   Vars
+   ========================================================================== */
+
+@white: #fff;
+@darkGrey: #222;
+@jhoBlue: #0f7e8e;
+@greyBorder: #555;
+
+/* ==========================================================================
+   General
+   ========================================================================== */
+
+.right { text-align:  right; }
+.left { text-align:  left; }
+
+body {
+	background-color: @darkGrey;
+	color: @white;
+	padding-top: 50px;
+
+	h1 {
+		border-bottom: 1px solid @greyBorder;
+		padding-bottom: 15px;
+		margin-bottom: 50px;
+		width: 100%;
+	}
+	
+	form {
+		.my-btn {
+			button { width: 100%; }
+		}
+	}
+
+	canvas { margin: 50px 0 25px; }
+
+	.error-msg { text-align: center; }
+}

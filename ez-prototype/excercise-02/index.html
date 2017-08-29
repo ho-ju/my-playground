@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet/less" type="text/css" href="../css/main.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js" type="text/javascript"></script>
+</head>
+
+<body ng-app="myApp">
+    <div class="container">
+        <h1>Excercise 2</h1>
+        <div ng-controller="searchController" ng-init="init();">
+            <!-- Form -->
+            <form ng-submit="getData()">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-10">
+                            <input type="input" class="form-control" id="searchInput" placeholder="Search..." ng-model="formData.searchText">
+                        </div>
+                        <div class="col-2 right my-btn">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- Graph Canvas -->
+            <canvas id="graph"></canvas>
+
+            <!-- Prev / Next Buttons -->
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <button type="button" class="btn btn-primary btn-sm btn-dark" ng-click="prevPage();" ng-if="!prevDisabled && success">Prev</button>
+                </div>
+                <div class="col-4 right">
+                    <button type="button" class="btn btn-primary btn-sm btn-dark" ng-click="nextPage();" ng-if="!nextDisabled && success">Next</button>
+                </div>
+            </div>
+
+            <!-- Error Msg -->
+            <p class="error-msg" ng-if="error">There was an error retrieving the data.</p>
+        </div>
+
+    </div>
+
+    <!-- Script -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="excercise-02.js"></script>
+</body>
+
+</html>
