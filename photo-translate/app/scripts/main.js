@@ -299,7 +299,7 @@
         console.log('*** Generated power ' + Math.round(mouseDistance) +
           ' of ' + myWii.powerShakeTarget);
 
-        if (Math.round(mouseDistance) > myWii.powerShakeTarget) {
+        if (_.round(mouseDistance) > myWii.powerShakeTarget) {
           myWii.togglePower();
         }
       }
