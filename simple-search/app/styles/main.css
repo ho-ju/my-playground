@@ -1,0 +1,646 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+Note: any .css or .scss files included in the 'styles' directory
+will be correctly compiled during `gulp serve` and `gulp`
+ */
+
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.mdl-demo .mdl-layout__header-row {
+  padding-left: 40px;
+}
+.mdl-demo .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
+  font-size: inherit;
+}
+.mdl-demo .mdl-layout__tab-bar-button {
+  display: none;
+}
+.mdl-demo .mdl-layout.is-small-screen .mdl-layout__tab-bar .mdl-button {
+  display: none;
+}
+.mdl-demo .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar,
+.mdl-demo .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar-container {
+  overflow: visible;
+}
+.mdl-demo .mdl-layout__tab-bar-container {
+  height: 64px;
+}
+.mdl-demo .mdl-layout__tab-bar {
+  padding: 0;
+  padding-left: 16px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+.mdl-demo .mdl-layout__tab-bar .mdl-layout__tab {
+  height: 64px;
+  line-height: 64px;
+}
+.mdl-demo .mdl-layout__tab-bar .mdl-layout__tab.is-active::after {
+  background-color: white;
+  height: 4px;
+}
+.mdl-demo main > .mdl-layout__tab-panel {
+  padding: 8px;
+  padding-top: 48px;
+}
+.mdl-demo .mdl-card {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.mdl-demo .mdl-card > * {
+  height: auto;
+}
+.mdl-demo .mdl-card .mdl-card__supporting-text {
+  margin: 40px;
+  flex-grow: 1;
+  padding: 0;
+  color: inherit;
+  width: calc(100% - 80px);
+}
+.mdl-demo.mdl-demo .mdl-card__supporting-text h4 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.mdl-demo .mdl-card__actions {
+  margin: 0;
+  padding: 4px 40px;
+  color: inherit;
+}
+.mdl-demo .mdl-card__actions a {
+  color: #00BCD4;
+  margin: 0;
+}
+.mdl-demo .mdl-card__actions a:hover,
+.mdl-demo .mdl-card__actions a:active {
+  color: inherit;
+  background-color: transparent;
+}
+.mdl-demo .mdl-card__supporting-text + .mdl-card__actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+.mdl-demo #add {
+  position: absolute;
+  right: 40px;
+  top: 36px;
+  z-index: 999;
+}
+
+.mdl-demo .mdl-layout__content section:not(:last-of-type) {
+  position: relative;
+  margin-bottom: 48px;
+}
+.mdl-demo section.section--center {
+  max-width: 860px;
+}
+.mdl-demo #features section.section--center {
+  max-width: 620px;
+}
+.mdl-demo section > header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mdl-demo section > .section__play-btn {
+  min-height: 200px;
+}
+.mdl-demo section > header > .material-icons {
+  font-size: 3rem;
+}
+.mdl-demo section > button {
+  position: absolute;
+  z-index: 99;
+  top: 8px;
+  right: 8px;
+}
+.mdl-demo section .section__circle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 0;
+  flex-shrink: 1;
+}
+.mdl-demo section .section__text {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding-top: 8px;
+}
+.mdl-demo section .section__text h5 {
+  font-size: inherit;
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+.mdl-demo section .section__text a {
+  text-decoration: none;
+}
+.mdl-demo section .section__circle-container > .section__circle-container__circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  margin: 8px 0;
+}
+.mdl-demo section.section--footer .section__circle--big {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin: 8px 32px;
+}
+.mdl-demo .is-small-screen section.section--footer .section__circle--big {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin: 8px 16px;
+}
+.mdl-demo section.section--footer {
+  padding: 64px 0;
+  margin: 0 -8px -8px -8px;
+}
+.mdl-demo section.section--center .section__text:not(:last-child) {
+  border-bottom: 1px solid rgba(0,0,0,.13);
+}
+.mdl-demo .mdl-card .mdl-card__supporting-text > h3:first-child {
+  margin-bottom: 24px;
+}
+.mdl-demo .mdl-layout__tab-panel:not(#overview) {
+  background-color: white;
+}
+.mdl-demo #features section {
+  margin-bottom: 72px;
+}
+.mdl-demo #features h4, #features h5 {
+  margin-bottom: 16px;
+}
+.mdl-demo .toc {
+  border-left: 4px solid #C1EEF4;
+  margin: 24px;
+  padding: 0;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.mdl-demo .toc h4 {
+  font-size: 0.9rem;
+  margin-top: 0;
+}
+.mdl-demo .toc a {
+  color: #4DD0E1;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 28px;
+  display: block;
+}
+.mdl-demo .mdl-menu__container {
+  z-index: 99;
+}
+
+
+/***********************
+*
+* Custom Styles
+*
+************************/
+
+/* ==========================================================================
+   Vars
+   ========================================================================== */
+$bg-color: red;
+$white: #fff;
+$black: #111;
+$silver: #cfcbcb;
+$lightGrey: #eee;
+$darkGrey: #222;
+$medGrey: #666;
+$jhoBlue: #0f7e8e;
+$goldy: #555555;
+
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+@mixin basicAnimateAll($duration: .25s){
+  -webkit-transition: all $duration ease;
+  -moz-transition: all $duration ease;
+  -o-transition: all $duration ease;
+  -ms-transition: all $duration ease
+}
+
+@mixin lessenOpacity($opacity: .8){
+  opacity: $opacity;
+}
+
+@mixin fjallaFont(){
+  font-family: 'Fjalla One', sans-serif;
+}
+
+@mixin roundedCorners($pixels: 5px) {
+  -moz-border-radius: $pixels;
+  -webkit-border-radius: $pixels;
+  border-radius: $pixels; /* future proofing */
+  -khtml-border-radius: $pixels; /* for old Konqueror browsers */
+}
+
+$highdensity:       "only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+                    "only screen and (min--moz-device-pixel-ratio: 1.5)",
+                    "only screen and (-o-min-device-pixel-ratio: 3/2)",
+                    "only screen and (min-device-pixel-ratio: 1.5)";
+$mobile:            "only screen and (max-width: 768px)";
+$mobileResponsive:  "only screen and (max-width: 420px)";
+$tablet:            "only screen and (min-width: 768px) and (max-width: 949px)";
+$desktop:           "only screen and (min-width: 950px)";
+
+@media #{$mobile} {
+  .hidden-mobile {
+      display:none!important;
+  }
+  .visible-mobile {
+      display:block!important;
+  }
+  .visible-mobile-inline-block {
+      display:inline-block!important;
+  }
+}
+@media #{$desktop} {
+  .hidden-desktop {
+      display:none!important;
+  }
+  .visible-desktop {
+      display:block;
+  }
+  .visible-desktop-inline-block {
+      display:inline-block;
+  }
+}
+@media #{$tablet} {
+  .hidden-desktop {
+      display:none!important;
+  }
+  .visible-desktop {
+      display:block;
+  }
+  .visible-desktop-inline-block {
+      display:inline-block;
+  }
+}
+
+/* ==========================================================================
+   01 - General
+   ========================================================================== */
+::selection {
+  background: $jhoBlue; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $jhoBlue; /* Gecko Browsers */
+}
+
+body {
+  background: $darkGrey;
+}
+
+h1 {
+  font-family: 'Fjalla One', sans-serif;
+  color: $silver;
+  font-size: 2rem;
+  letter-spacing: 0.2em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.loading-circles {
+  margin-top: 50px;
+  .mdl-progress {
+    margin: 0 auto;
+    > .progressbar { background-color: $jhoBlue; }
+  }
+}
+
+.api-error {
+  text-align: center;
+  margin-top: 50px;
+  > span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1em;
+  }
+  .input {
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+// Animations
+.myAnimated {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1!important;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1!important;}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0!important;}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0!important;}
+}
+
+.fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+}
+
+@-webkit-keyframes showMe {
+  0% {max-height: 0; }
+  100% {max-height: 500px;}
+}
+
+@keyframes showMe {
+  0% {max-height: 0;}
+  100% {max-height: 500px; overflow: inherit;}
+}
+
+.showMe {
+  -webkit-animation-name: showMe;
+          animation-name: showMe;
+}
+
+@-webkit-keyframes moveBadge {
+  0% {top: 20px; }
+  100% {top: 40px; }
+}
+
+@keyframes moveBadge {
+  0% {top: 20px;}
+  100% {top: 40px;  overflow: inherit;}
+}
+
+// TODO: Fix Animation with removing items
+// .result-list-item.ng-enter,
+// .result-list-item.ng-leave,
+// .result-list-item.ng-move {
+//   transition: 0.5s linear all;
+// }
+
+// .result-list-item.ng-enter,
+// .result-list-item.ng-move {
+//   height: 0;
+//   opacity: 0;
+//   overflow: hidden;
+// }
+
+// .result-list-item.ng-enter.ng-enter-active,
+// .result-list-item.ng-move.ng-move-active {
+//   height: 250px;
+//   opacity: 1;
+// }
+
+// .result-list-item.ng-leave {
+//   opacity: 1;
+//   overflow: hidden;
+// }
+
+// .result-list-item.ng-leave.ng-leave-active {
+//   height: 0;
+//   opacity: 0;
+// }
+
+
+/* ==========================================================================
+   02 - Header
+   ========================================================================== */
+
+header {
+  background: $darkGrey url('/images/concrete-wall.png') top left repeat!important;
+
+  .mdl-cell {
+    text-align: center;
+  }
+  .logo {
+    width: auto;
+    height: 125px;
+    @media #{$mobile} {
+      height: 100px;
+    }
+  }
+}
+
+/* ==========================================================================
+   03 - Search Bar
+   ========================================================================== */
+
+#search {
+  background-color: $darkGrey;
+  text-align: center;
+  overflow: hidden;
+  max-height: 0;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  z-index: 101;
+
+  &.mdl-grid,
+  .mdl-cell {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .mdl-textfield {
+    color: $white;
+
+    input {
+      color: $white;
+      border-color: lighten( $darkGrey, 20% );
+    }
+    label {
+      color: lighten( $darkGrey, 20% );
+      &:after {
+        background-color: $jhoBlue;
+      }
+    }
+
+    .material-icons {
+      position: absolute;
+      right: 0;
+      top: 17px;
+      margin: 0;
+      @include basicAnimateAll();
+      &:hover {
+        cursor: pointer;
+        color: lighten($darkGrey, 30%);
+      }
+    }
+    &.last { margin-left: 25px; }
+  }
+
+  .material-icons {
+    top: 8px;
+    position: relative;
+    margin-right: 5px;
+    color: lighten( $darkGrey, 20% );
+  }
+
+  .mdl-badge {
+    top: 20px;
+    right: -5.5rem;
+    @media #{$mobile} {
+      right: auto;
+    }
+
+    &:after {
+      width: 30px;
+      height: 30px;
+    }
+
+    &.animateMe {
+      -webkit-animation-name: moveBadge;
+      animation-name: moveBadge;
+      -webkit-animation-duration: 2s;
+      animation-duration: 2s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 1.5s;
+      animation-delay: 1.5s;
+    }
+  }
+}
+
+/* ==========================================================================
+   04 - Boxes
+   ========================================================================== */
+
+main {
+  padding-bottom: 50px;
+  overflow-y: auto!important;
+  overflow-x: hidden!important;
+}
+
+#overview {
+  > section {
+    position: relative;
+
+    header {
+      .material-icons { font-size: 6rem; }
+    }
+
+    .mdl-card__supporting-text {
+      margin-bottom: 20px;
+      h4 {
+        display: table;
+        width: 100%;
+
+        // Mobile styles
+        @media #{$mobile} {
+          display: block;
+        }
+
+        > span {
+          display: table-cell;
+          line-height: 1em;
+          vertical-align: middle;
+          @media #{$mobile} {
+            display: block;
+          }
+
+          &.title {
+            color: $darkGrey;
+            width: 45%;
+            @media #{$mobile} {
+              width: 100%;
+              margin-bottom: 10px;
+            }
+          }
+        }
+        .deets {
+          font-size: 12px;
+
+          > span {
+            // width: 33%;
+            &.sortable {
+              @include basicAnimateAll();
+              &:hover,
+              &.active {
+                color: $darkGrey;
+                cursor: pointer;
+              }
+              @media #{$mobile} {
+                display: block;
+                margin-bottom: 5px;
+              }
+            }
+            > span {
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+
+          .icon {
+            padding: 0 2px 0 15px;
+            @media #{$mobile} {
+              padding-left: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .mdl-card__actions {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      @media #{$mobile} {
+        text-align: center;
+      }
+
+      button {
+        font-family: 'Fjalla One', sans-serif;
+        letter-spacing: 0.05em;
+        line-height: 35px;
+
+        &.apply {
+          margin-left: 10px;
+          background-color: $jhoBlue;
+          color: $white;
+        }
+      }
+    }
+  }
+}

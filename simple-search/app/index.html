@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Jibes Search</title>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web Starter Kit">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#0f7e8e">
+
+    <!-- Color the status bar on mobile devices -->
+    <meta name="theme-color" content="#0f7e8e">
+
+    <!-- Material Design icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Roboto+Slab:300,400,700" rel="stylesheet">
+
+    <!-- Your styles -->
+    <link rel="stylesheet" href="styles/main.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-toarrayfilter/1.0.3/toArrayFilter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
+
+  </head>
+
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" ng-app="goodJibesApp">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" ng-controller="jobsController" ng-init="getJobsData();">
+      <header class="mdl-layout__header mdl-layout__header--scroll">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col">
+            <img src="/images/logo.png" alt="jho" class="logo">
+            <h1>Good Jibes Search</h1>
+          </div>
+        </div>
+        <!-- Search Bar -->
+        <div id="search" class="" ng-class="{'showMe': success && results}">
+          <div class="mdl-cell mdl-cell--12-col">
+            <form action="#">
+              <i class="material-icons hidden-mobile">search</i>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="sample1" ng-model="titleQ">
+                <label class="mdl-textfield__label" for="sample1">Job Title...</label>
+                <i class="material-icons myAnimated" ng-click="titleQ='';" ng-show="titleQ" ng-class="{'fadeIn': titleQ}">cancel</i>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield last">
+                <input class="mdl-textfield__input" type="text" id="sample2" ng-model="locQ">
+                <label class="mdl-textfield__label" for="sample2">Location...</label>
+                <i class="material-icons myAnimated" ng-click="locQ='';" ng-show="locQ" ng-class="{'fadeIn': locQ}">cancel</i>
+              </div>
+              <span class="mdl-badge" data-badge="{{filteredResults.length}}" ng-class="{'animateMe': success && results}"></span>
+            </form>
+          </div>
+        </div>
+      </header>
+      <main class="mdl-layout__content" ajax-loader="success || apiError" ng-cloak>
+        
+        <!-- Error -->
+        <p class="api-error" ng-show="apiError">
+          <span><i class="material-icons myAnimated">cancel</i></span>
+          <span>Oops, there was an error loading the data, please try again shortly.</span>
+        </p>
+
+        <!-- No Filtered Results -->
+        <p class="api-error" ng-show="!filteredResults.length && success">
+          <span><i class="material-icons myAnimated">cancel</i></span>
+          <span>No results returned for <span ng-show="titleQ">keyword <span class="input">{{titleQ}}</span></span><span ng-show="titleQ && locQ"> and </span><span ng-show="locQ">location <span class="input">{{locQ}}</span></span></span>
+        </p>
+
+        <!-- Search Items -->
+        <div class="mdl-layout__tab-panel is-active myAnimated" id="overview" ng-show="success">
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp result-list-item" ng-repeat="job in filteredResults = ( results | toArray | orderBy:sortOrder | filter: titleQ | filter: locQ)">
+            <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+              <i class="material-icons">{{::job.category}}</i>
+            </header>
+            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+              <div class="mdl-card__supporting-text">
+                <h4>
+                  <span class="title">{{::job.title}}</span>
+                  <span class="deets">
+                    <span class="sortable" ng-click="sortBy('company');" ng-class="{'active': sortOrder == 'company'}">
+                      <span class="icon"><i class="material-icons">location_city</i></span>
+                      <span class="company">{{::job.company}}</span>
+                    </span>
+                    <span class="sortable" ng-click="sortBy('locCountry');" ng-class="{'active': sortOrder == 'locCountry'}">
+                      <span class="icon"><i class="material-icons">location_on</i></span>
+                      <span class="location">{{::job.locCity}}, {{::job.locCountry}}</span>
+                    </span>
+                    <span class="sortable" ng-click="sortBy('date');" ng-class="{'active': sortOrder == 'date'}">
+                      <span class="icon"><i class="material-icons">update</i></span>
+                      <span class="date">{{::job.date}} day<span ng-if="job.date > 1">s</span> ago</span>
+                    </span>
+                  </span>
+                </h4>
+                {{::job.description}}
+              </div>
+              <div class="mdl-card__actions">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                  Read More
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect apply">
+                  Apply Now
+                </button>
+              </div>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn{{$index}}">
+              <i class="material-icons">share</i>
+            </button>
+            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn{{$index}}">
+              <li class="mdl-menu__item">Facebook</li>
+              <li class="mdl-menu__item">Twitter</li>
+              <li class="mdl-menu__item">LinkedIn</li>
+            </ul>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <!-- build:js scripts/main.min.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+  </body>
+</html>
