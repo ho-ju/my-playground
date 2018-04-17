@@ -445,7 +445,7 @@ h1 {
    ========================================================================== */
 
 header {
-  background: $darkGrey url('/images/concrete-wall.png') top left repeat!important;
+  background: $darkGrey url('images/concrete-wall.png') top left repeat!important;
 
   .mdl-cell {
     text-align: center;
